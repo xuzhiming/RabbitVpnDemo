@@ -1,1 +1,2 @@
-git "https://github.com/zhuhaow/NEKit" "master"
+github "zhuhaow/NEKit"
+#git "https://github.com/zhuhaow/NEKit" "master"

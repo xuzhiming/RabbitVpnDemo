@@ -26,7 +26,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
 
 	override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
         DDLog.removeAllLoggers()
-        DDLog.add(DDASLLogger.sharedInstance, with: DDLogLevel.info)
+        DDLog.add(DDASLLogger.sharedInstance(), with: DDLogLevel.info)
         ObserverFactory.currentFactory = DebugObserverFactory()
         NSLog("-------------")
         
@@ -40,7 +40,9 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         NSLog(ss_adder)
         
         let ss_port = conf["ss_port"] as! Int
-        let method = conf["ss_method"] as! String
+        var method = conf["ss_method"] as! String
+        method = method.uppercased().replacingOccurrences(of: "-", with: "");
+        
         NSLog(method)
 
         let password = conf["ss_password"] as!String

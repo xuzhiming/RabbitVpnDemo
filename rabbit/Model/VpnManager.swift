@@ -51,6 +51,7 @@ class VpnManager{
                 NotificationCenter.default.addObserver(forName: NSNotification.Name.NEVPNStatusDidChange, object: manager.connection, queue: OperationQueue.main, using: { [unowned self] (notification) -> Void in
                     self.updateVPNStatus(manager)
                     })
+                
             }
         }
     }
@@ -78,7 +79,7 @@ extension VpnManager{
     fileprivate func createProviderManager() -> NETunnelProviderManager {
         let manager = NETunnelProviderManager()
         let conf = NETunnelProviderProtocol()
-        conf.serverAddress = "Rabbit"
+        conf.serverAddress = "127.0.0.1"
         manager.protocolConfiguration = conf
         manager.localizedDescription = "Rabbit VPN"
         return manager
@@ -168,10 +169,10 @@ extension VpnManager{
     
     fileprivate func setRulerConfig(_ manager:NETunnelProviderManager){
         var conf = [String:AnyObject]()
-        conf["ss_address"] = "YOUR SS URL" as AnyObject?
-        conf["ss_port"] = 1025 as AnyObject?
+        conf["ss_address"] = "133.130.125.46" as AnyObject?
+        conf["ss_port"] = 1039 as AnyObject?
         conf["ss_method"] = "AES-256-CFB" as AnyObject?
-        conf["ss_password"] = "YOUR SS PASSWORD" as AnyObject?
+        conf["ss_password"] = "JQh8FU" as AnyObject?
         conf["ymal_conf"] = getRuleConf() as AnyObject?
         let orignConf = manager.protocolConfiguration as! NETunnelProviderProtocol
         orignConf.providerConfiguration = conf
